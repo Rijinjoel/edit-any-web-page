@@ -4,6 +4,10 @@ Click any webpage and edit its text in place. A tiny add-on for [Zen Browser](ht
 
 Handy for mocking up copy changes, trying out headlines, cleaning a page before a screenshot, or just having fun with the news.
 
+<p align="center">
+  <img src="docs/popup.png" width="280" alt="Edit Mode toolbar popup with a blue Toggle editing button, a Keep my edits after reload checkbox, and buttons to clear saved edits for this page or all pages">
+</p>
+
 ## Features
 
 - **Edit any page.** Turn on edit mode and click anywhere to type, delete or paste.
