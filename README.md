@@ -1,11 +1,11 @@
-# Zen Edit Mode
+# Edit any web page
 
 Click any webpage and edit its text in place. A tiny add-on for [Zen Browser](https://zen-browser.app), Firefox and Chromium browsers (Chrome, Edge, Brave, Arc, Vivaldi), with an optional setting to keep your edits after the page reloads.
 
 Handy for mocking up copy changes, trying out headlines, cleaning a page before a screenshot, or just having fun with the news.
 
 <p align="center">
-  <img src="docs/popup.png" width="280" alt="Edit Mode toolbar popup with a blue Toggle editing button, a Keep my edits after reload checkbox, and buttons to clear saved edits for this page or all pages">
+  <img src="docs/popup.png" width="280" alt="Edit any web page toolbar popup with a blue Toggle editing button, a Keep my edits after reload checkbox, and buttons to clear saved edits for this page or all pages">
 </p>
 
 ## Features
@@ -20,17 +20,17 @@ Handy for mocking up copy changes, trying out headlines, cleaning a page before 
 
 ### Zen and Firefox: from a release (recommended)
 
-1. Download the latest `.xpi` from [Releases](https://github.com/Rijinjoel/zen-edit-mode/releases). It is signed by Mozilla.
+1. Download the latest `.xpi` from [Releases](https://github.com/Rijinjoel/edit-any-web-page/releases). It is signed by Mozilla.
 2. In Zen, open `about:addons`, click the gear icon, then **Install Add-on From File…**.
 3. Pick the `.xpi` and click **Add**.
-4. Pin the button: click the extensions (puzzle) icon and pin **Edit Mode**.
+4. Pin the button: click the extensions (puzzle) icon and pin **Edit any web page**.
 
 ### Zen and Firefox: from source (temporary)
 
 1. Download or clone this repo.
 2. In Zen, open `about:debugging#/runtime/this-firefox`.
 3. Click **Load Temporary Add-on…** and choose `manifest.json`.
-4. Pin the button: click the extensions (puzzle) icon and pin **Edit Mode**.
+4. Pin the button: click the extensions (puzzle) icon and pin **Edit any web page**.
 
 A temporary add-on is removed when the browser restarts.
 
@@ -42,7 +42,7 @@ The same files work in Chromium browsers (version 121 or later).
 2. Open the extensions page: `chrome://extensions` (Edge: `edge://extensions`, Brave: `brave://extensions`).
 3. Turn on **Developer mode** (top right in Chrome, left sidebar in Edge).
 4. Click **Load unpacked** and choose the repo folder.
-5. Pin the button: click the puzzle icon in the toolbar and pin **Edit Mode**.
+5. Pin the button: click the puzzle icon in the toolbar and pin **Edit any web page**.
 
 It stays installed after restarts. Chrome may list two harmless warnings on the extension's card (`browser_specific_settings` and `background.scripts`): those settings are for Firefox, and Chrome ignores them.
 
@@ -54,7 +54,7 @@ Zen and Firefox only keep add-ons that Mozilla has signed. You can sign this one
 
 ### One-time setup
 
-1. **Use your own add-on ID** (only if you forked this repo). In `manifest.json`, change `"id": "edit-mode@local"` to something unique, such as `"zen-edit-mode@yourname"`. Mozilla ties an ID to the first account that signs it, and it can't be changed afterwards.
+1. **Use your own add-on ID** (only if you forked this repo). In `manifest.json`, change `"id": "edit-mode@local"` to something unique, such as `"edit-any-web-page@yourname"`. Mozilla ties an ID to the first account that signs it, and it can't be changed afterwards.
 2. **Create a Mozilla developer account.** Go to [addons.mozilla.org](https://addons.mozilla.org), click **Log in**, then open the [Developer Hub](https://addons.mozilla.org/developers/) and accept the developer agreement.
 3. **Get your API keys.** Open [addons.mozilla.org/developers/addon/api/key](https://addons.mozilla.org/developers/addon/api/key/) and click **Generate new credentials**. Copy both values:
    - **JWT issuer** is your API key (looks like `user:12345678:123`).
@@ -65,7 +65,7 @@ Zen and Firefox only keep add-ons that Mozilla has signed. You can sign this one
 1. Open Terminal in the repo folder:
 
    ```bash
-   cd path/to/zen-edit-mode
+   cd path/to/edit-any-web-page
    ```
 
 2. Give web-ext your keys, replacing the placeholders. This keeps them out of the signing command:
@@ -102,7 +102,7 @@ Mozilla refuses a version number it has already signed. Raise `"version"` in `ma
 
 ## Usage
 
-Click the **Edit Mode** toolbar button to open the popup:
+Click the **Edit any web page** toolbar button to open the popup:
 
 | Control | What it does |
 | --- | --- |
