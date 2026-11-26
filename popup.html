@@ -1,0 +1,40 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff; --fg: #1c1c1e; --muted: #6e6e73; --line: #d9d9de;
+    --soft: #f2f2f5; --accent: #0a66d8; --danger: #c4312b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1f1f23; --fg: #f2f2f5; --muted: #9a9aa2; --line: #3a3a40;
+            --soft: #2a2a2f; --accent: #3b8bf0; --danger: #ff6b63; }
+  }
+  body { margin: 0; padding: 14px; width: 248px; display: grid; gap: 8px;
+         font: 13px/1.3 system-ui, sans-serif; background: var(--bg); color: var(--fg); }
+  button { font: inherit; font-weight: 600; padding: 9px 12px; border-radius: 8px; cursor: pointer;
+           border: 1px solid var(--line); background: var(--soft); color: var(--fg);
+           transition: filter .12s, transform .06s; }
+  button:hover { filter: brightness(0.96); }
+  button:active { transform: scale(0.98); }
+  button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  #toggle { background: var(--accent); border-color: var(--accent); color: #fff; }
+  #toggle:hover { filter: brightness(1.08); }
+  #clear { background: transparent; color: var(--danger); border-color: transparent; font-weight: 500; }
+  #clear:hover { background: var(--soft); filter: none; }
+  label { display: flex; align-items: center; gap: 8px; padding: 8px 2px; cursor: pointer; }
+  input { accent-color: var(--accent); width: 15px; height: 15px; margin: 0; }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 2px 0; width: 100%; }
+  #msg { color: var(--muted); font-size: 12px; text-align: center; }
+  #msg:empty { display: none; }
+  @media (prefers-reduced-motion: reduce) { button { transition: none; } button:active { transform: none; } }
+</style>
+<body>
+  <button id="toggle">Toggle editing on this page</button>
+  <label><input type="checkbox" id="persist"> Keep my edits after reload</label>
+  <hr>
+  <button id="clearPage">Clear saved edits for this page</button>
+  <button id="clear">Clear all saved edits</button>
+  <span id="msg"></span>
+  <script src="popup.js"></script>
+</body>
