@@ -1,3 +1,4 @@
+globalThis.browser ??= chrome; // Chromium has only `chrome`
 // designMode makes the whole page editable.
 async function toggle() {
   const [tab] = await browser.tabs.query({ active: true, currentWindow: true });

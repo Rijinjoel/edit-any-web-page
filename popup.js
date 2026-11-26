@@ -1,3 +1,4 @@
+globalThis.browser ??= chrome; // Chromium has only `chrome`
 const box = document.getElementById("persist");
 const msg = document.getElementById("msg");
 

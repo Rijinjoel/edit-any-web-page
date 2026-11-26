@@ -1,3 +1,4 @@
+globalThis.browser ??= chrome; // Chromium has only `chrome`
 // Saved edits are keyed by page URL without the #hash.
 // shortcut: restores the whole <body> HTML, so pages that re-render with JS (React etc.)
 // may overwrite or break; upgrade to per-text-node patches if that bites.

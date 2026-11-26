@@ -1,6 +1,6 @@
 # Zen Edit Mode
 
-Click any webpage and edit its text in place. A tiny add-on for [Zen Browser](https://zen-browser.app) and Firefox, with an optional setting to keep your edits after the page reloads.
+Click any webpage and edit its text in place. A tiny add-on for [Zen Browser](https://zen-browser.app), Firefox and Chromium browsers (Chrome, Edge, Brave, Arc, Vivaldi), with an optional setting to keep your edits after the page reloads.
 
 Handy for mocking up copy changes, trying out headlines, cleaning a page before a screenshot, or just having fun with the news.
 
@@ -18,14 +18,14 @@ Handy for mocking up copy changes, trying out headlines, cleaning a page before 
 
 ## Install
 
-### From a release (recommended)
+### Zen and Firefox: from a release (recommended)
 
 1. Download the latest `.xpi` from [Releases](https://github.com/Rijinjoel/zen-edit-mode/releases). It is signed by Mozilla.
 2. In Zen, open `about:addons`, click the gear icon, then **Install Add-on From File…**.
 3. Pick the `.xpi` and click **Add**.
 4. Pin the button: click the extensions (puzzle) icon and pin **Edit Mode**.
 
-### From source (temporary)
+### Zen and Firefox: from source (temporary)
 
 1. Download or clone this repo.
 2. In Zen, open `about:debugging#/runtime/this-firefox`.
@@ -34,7 +34,21 @@ Handy for mocking up copy changes, trying out headlines, cleaning a page before 
 
 A temporary add-on is removed when the browser restarts.
 
-## Signing your own build
+### Chrome, Edge, Brave and other Chromium browsers
+
+The same files work in Chromium browsers (version 121 or later).
+
+1. Download or clone this repo. If you downloaded a ZIP, unzip it.
+2. Open the extensions page: `chrome://extensions` (Edge: `edge://extensions`, Brave: `brave://extensions`).
+3. Turn on **Developer mode** (top right in Chrome, left sidebar in Edge).
+4. Click **Load unpacked** and choose the repo folder.
+5. Pin the button: click the puzzle icon in the toolbar and pin **Edit Mode**.
+
+It stays installed after restarts. Chrome may list two harmless warnings on the extension's card (`browser_specific_settings` and `background.scripts`): those settings are for Firefox, and Chrome ignores them.
+
+To publish it on the Chrome Web Store instead, zip the folder's add-on files and upload them in the [Chrome Web Store developer dashboard](https://chrome.google.com/webstore/devconsole). Google charges a one-time US$5 developer fee.
+
+## Signing your own build (Zen and Firefox)
 
 Zen and Firefox only keep add-ons that Mozilla has signed. You can sign this one for free as an unlisted (private) add-on. You need [Node.js](https://nodejs.org) installed.
 
@@ -111,7 +125,7 @@ Everything is stored locally in your browser. Nothing is sent anywhere.
 
 - Edits are only visible to you, in your browser. The real website doesn't change.
 - Sites that keep redrawing themselves with JavaScript (Gmail, X, most web apps) may overwrite restored edits or stop working properly after a restore. Mostly static pages work best.
-- Browser pages such as `about:` pages and addons.mozilla.org can't be edited.
+- Browser pages such as `about:` and `chrome://` pages, addons.mozilla.org and the Chrome Web Store can't be edited.
 
 ## Files
 
