@@ -14,7 +14,14 @@ Handy for mocking up copy changes, trying out headlines, cleaning a page before 
 
 ## Install
 
-### Try it now (temporary)
+### From a release (recommended)
+
+1. Download the latest `.xpi` from [Releases](https://github.com/Rijinjoel/zen-edit-mode/releases). It is signed by Mozilla.
+2. In Zen, open `about:addons`, click the gear icon, then **Install Add-on From File…**.
+3. Pick the `.xpi` and click **Add**.
+4. Pin the button: click the extensions (puzzle) icon and pin **Edit Mode**.
+
+### From source (temporary)
 
 1. Download or clone this repo.
 2. In Zen, open `about:debugging#/runtime/this-firefox`.
@@ -23,18 +30,57 @@ Handy for mocking up copy changes, trying out headlines, cleaning a page before 
 
 A temporary add-on is removed when the browser restarts.
 
-### Keep it installed
+## Signing your own build
 
-Zen and Firefox only keep add-ons that Mozilla has signed. You can sign this one for free as an unlisted (private) add-on:
+Zen and Firefox only keep add-ons that Mozilla has signed. You can sign this one for free as an unlisted (private) add-on. You need [Node.js](https://nodejs.org) installed.
 
-1. Create API keys at [addons.mozilla.org/developers/addon/api/key](https://addons.mozilla.org/developers/addon/api/key/).
-2. From the repo folder, run:
+### One-time setup
+
+1. **Use your own add-on ID** (only if you forked this repo). In `manifest.json`, change `"id": "edit-mode@local"` to something unique, such as `"zen-edit-mode@yourname"`. Mozilla ties an ID to the first account that signs it, and it can't be changed afterwards.
+2. **Create a Mozilla developer account.** Go to [addons.mozilla.org](https://addons.mozilla.org), click **Log in**, then open the [Developer Hub](https://addons.mozilla.org/developers/) and accept the developer agreement.
+3. **Get your API keys.** Open [addons.mozilla.org/developers/addon/api/key](https://addons.mozilla.org/developers/addon/api/key/) and click **Generate new credentials**. Copy both values:
+   - **JWT issuer** is your API key (looks like `user:12345678:123`).
+   - **JWT secret** is a long random string. Keep it private.
+
+### Sign it
+
+1. Open Terminal in the repo folder:
 
    ```bash
-   npx web-ext sign --channel=unlisted --api-key=YOUR_KEY --api-secret=YOUR_SECRET
+   cd path/to/zen-edit-mode
    ```
 
-3. Open the signed `.xpi` file from the `web-ext-artifacts` folder in Zen to install it.
+2. Give web-ext your keys, replacing the placeholders. This keeps them out of the signing command:
+
+   ```bash
+   export WEB_EXT_API_KEY="user:12345678:123" WEB_EXT_API_SECRET="your-jwt-secret"
+   ```
+
+3. Sign:
+
+   ```bash
+   npx web-ext sign --channel=unlisted
+   ```
+
+   If it asks to install `web-ext`, type `y`. It uploads the add-on and waits for Mozilla's automatic review, which usually takes a few minutes. Keep the window open until it prints `Signed xpi downloaded`.
+
+4. Clear the keys from your shell when it's done:
+
+   ```bash
+   unset WEB_EXT_API_KEY WEB_EXT_API_SECRET
+   ```
+
+### Install the signed file
+
+1. If you loaded the temporary version, open `about:debugging#/runtime/this-firefox` and click **Remove** on it.
+2. Open `about:addons`, click the gear icon, then **Install Add-on From File…**.
+3. Pick the `.xpi` inside the `web-ext-artifacts` folder and click **Add**.
+
+It now stays installed after restarts.
+
+### Signing a new version
+
+Mozilla refuses a version number it has already signed. Raise `"version"` in `manifest.json` (for example `1.4` to `1.5`), then repeat **Sign it** and **Install the signed file**.
 
 ## Usage
 
